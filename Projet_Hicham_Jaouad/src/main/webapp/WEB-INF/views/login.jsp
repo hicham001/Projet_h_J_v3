@@ -20,19 +20,19 @@
     <link href="<%=request.getContextPath()%>/static/css/icheck/flat/green.css" rel="stylesheet">
 	<script src="<%=request.getContextPath()%>/static/js/jquery.min.js"></script>
 	
-<body style="background:#E74F3E;">
+<body style="background:#FFF0D6;">
     
     <div class="">
         <a class="hiddenanchor" id="toregister"></a>
         <a class="hiddenanchor" id="tologin"></a>
 
         <div id="wrapper">
-            <div id="login" class="animate form">
-                <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span>
-                                    </button>
-                                    <p>${msg}</p>
-                                </div>
+            <div id="login" class="animate form" style="background:#FFFFFF;">
+     
+                <p class="alert alert-danger alert-dismissible fade in" >${msg}</p>
+                 
+           
+                
                 <section class="login_content">
             
                     <form action="<c:url value='j_spring_security_check'/>" method="post">
@@ -48,9 +48,7 @@
                             
                         </div>
                         <div class="clearfix"></div>
-                        <div class="separator">
-
-                        </div>
+                        
                     </form>
                     <!-- form -->
                 </section>

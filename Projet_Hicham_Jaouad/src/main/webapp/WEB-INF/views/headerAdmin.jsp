@@ -24,7 +24,7 @@
                         <div class="menu_section"><br>
                        <h3>${param.role}</h3>
                             <ul class="nav side-menu">
-                                <li><a href="#">
+                                <li><a href="./acceuil">
 								<i class="fa fa-home"></i> Acceuil</a>                 
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Utilisateur <span class="fa fa-chevron-down"></span></a>

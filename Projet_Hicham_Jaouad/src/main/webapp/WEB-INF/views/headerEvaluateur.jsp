@@ -24,12 +24,12 @@
                         <div class="menu_section"><br>
                        <h3>${param.role}</h3>
                             <ul class="nav side-menu"><br><br>
-                                <li><a href="#">
+                                <li><a href="./acceuil">
 								<i class="fa fa-home"></i> Acceuil</a>                 
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Feedbacks <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="#/createFeedbak">Nouveau Feedback</a>
+                                        <li><a href="./GestionFeedback#/createFeedbak">Nouveau Feedback</a>
                                         </li>
                                         <li><a href="./GestionFeedback">Gestion Feedback</a>
                                         </li>
