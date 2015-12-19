@@ -13,7 +13,7 @@ GestionProjet.factory('ProjetService', ['$http', '$q', function($http, $q){
 			collab1 : false,
 			editCollaborateur : function(collaborateur){
 		    	var deffered = $q.defer();
-		    	$http.put('/Collaborateur/', collaborateur)
+		    	$http.put('http://localhost:8085/echallenge/Collaborateur/', collaborateur)
 				.success(function(data,status){
 					factory.collab = data;
 					deffered.resolve(data);
@@ -25,7 +25,7 @@ GestionProjet.factory('ProjetService', ['$http', '$q', function($http, $q){
 		    
 		    getCollaborateur : function(matricule){
 		    	var deffered = $q.defer();
-		    	$http.get('/Collaborateur/getCollab?matricule='+matricule)
+		    	$http.get('http://localhost:8085/echallenge/Collaborateur/getCollab?matricule='+matricule)
 				.success(function(data,status){
 					factory.collab1 = data;
 					deffered.resolve(data);
@@ -67,9 +67,9 @@ GestionProjet.factory('ProjetService', ['$http', '$q', function($http, $q){
 			},
 			
 			
-			getCollaborateurs : function(){
+			getCollaborateurs : function(matricule){
 				var deffered = $q.defer();
-			 $http.get('Collaborateur/')
+			 $http.get('Manager/getCollaborateur?matricule='+matricule)
 			 .success(function(data,status){
 				 
 				 factory.collaborateurs = data;
@@ -192,7 +192,7 @@ GestionProjet.factory('ProjetService', ['$http', '$q', function($http, $q){
       },   
       addRPL : function(l){
 			var deffered = $q.defer();
-			$http.post('/echallenge/Description/AjouterResultat', l)
+			$http.post('http://localhost:8085/echallenge/Description/AjouterResultat', l)
 			.success(function(data,status){
 				l = data;
 				deffered.resolve(data);

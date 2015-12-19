@@ -115,8 +115,8 @@
 		alert(msg);
 	});
     };
-	
-	$scope.projetEval ={codeprojet:"",evaluateurs:[]};
+    
+    $scope.projetEval ={codeprojet:"",evaluateurs:[],manager:{matricule:"man1"}};
 	$scope.all = function(){ ProjetService.getProjets().then(function(projets){
 			$scope.projets = projets;
 		},function(msg){
@@ -124,12 +124,13 @@
 		});
 	};
 	
-	$scope.collaborateurs = function(){ ProjetService.getCollaborateurs().then(function(collaborateurs){
+	$scope.collaborateurs = function(){ ProjetService.getCollaborateurs("man1").then(function(collaborateurs){
 		$scope.collaborateurs = collaborateurs;
 	},function(msg){
 		alert(msg);
 	});
     };
+    
     $scope.collaborateurs();
 	$scope.evaluateurs = function(){ ProjetService.getEvaluateurs().then(function(evaluateurs){
 		$scope.evaluateurs = evaluateurs;

@@ -70,7 +70,6 @@ public class IObjectifConverterImpl implements IObjectifConverter {
 		target.setDescriptions(desConverter.convertListModelDto(source.getDescriptions(), false));
 		target.setProjet(projetConverter.convertModelDto(source.getProjet(), false));
 		target.setCollaborateurs(colConverter.converteListModelDto(source.getCollaborateurs(), false));
-		target.setReponse(repConverter.convertModelDto(source.getReponse(), false));
 		}
 		target.setCreationDate(source.getCreationDate());
 		target.setDeleted(source.isDeleted());
@@ -94,7 +93,6 @@ public class IObjectifConverterImpl implements IObjectifConverter {
 		target.setProjet(projetConverter.convertDtoModel(source.getProjet(), false));
 		target.setCollaborateurs(colConverter.converteListDtoModel(source.getCollaborateurs(), false));
 		target.setDescriptions(desConverter.convertListDtoModel(source.getDescriptions(), false));
-		target.setReponse(repConverter.convertDtoModel(source.getReponse(), false));
 			}
 		target.setCreationDate(source.getCreationDate());
 		target.setDeleted(source.isDeleted());

@@ -28,11 +28,15 @@
 
         <div id="wrapper">
             <div id="login" class="animate form" style="background:#FFFFFF;">
-     
+     <c:if test="condition"></c:if>
+     <c:choose>
+    <c:when test="${msg != null}">
+        
                 <p class="alert alert-danger alert-dismissible fade in" >${msg}</p>
+    </c:when>    
+    
+</c:choose>
                  
-           
-                
                 <section class="login_content">
             
                     <form action="<c:url value='j_spring_security_check'/>" method="post">

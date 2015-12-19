@@ -225,9 +225,16 @@ T  user = null;
 		List<ObjectifDto> listObjectifs = new ArrayList<ObjectifDto>();
 		for(ObjectifDto obj : cola.getObjectifs()){
 			ObjectifDto ob = f.find(obj.getIdObjectif());
+			if(!ob.getProjet().isDeleted())
 			listObjectifs.add(ob);
 		}
 		return listObjectifs;
+	}
+
+	@Override
+	public List<CollaborateurDto> getCollaborateurManager(String matricule) {
+		ManagerDto m = (ManagerDto) this.find(matricule);
+		return (List<CollaborateurDto>) m.getCollaborateurs();
 	}
 
 	@Override

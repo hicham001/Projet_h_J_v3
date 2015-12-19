@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+
+   <bean id="datasource"
+class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/echallengeSQLIDb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="jaouad"></property>
+</bean>
+
+<bean id="persistenceUnitManager"
+	class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+	<property name="defaultDataSource" ref="datasource"></property>
+	<property name="persistenceXmlLocations">
+			<list>
+				<value>classpath*:META-INF/persistence.xml</value>
+			</list>
+	</property>
+</bean>
+
+<bean id="entityManagerFactory"
+	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
+	<property name="persistenceUnitName" value="UP_ECHALLENGE"></property>
+</bean>
+
+<bean id="transactionManager"
+	class="org.springframework.orm.jpa.JpaTransactionManager">
+	<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+</bean>
+
+
+
+
+<!-- Converters beans -->
+<bean id="EvConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IEvaluateurConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+<property name="projetConverter" ref="ProjetConverter"></property>
+</bean>
+
+<bean id="ManagerConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IManagerConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+<property name="projetConverter" ref="ProjetConverter"></property>
+<property name="sujetConverter" ref="SujetConverter"></property>
+</bean> 
+
+<bean id="ColConverter" class="com.sqli.echallenge.bap.web.converters.Impl.ICollaborateurConverterImpl">
+<property name="managerConverter" ref="ManagerConverter"></property>
+<property name="evConverter" ref="EvConverter"></property>
+<property name="objectifConverter" ref="ObjConverter"></property>
+<property name="posteConverter" ref="PosteConverter"></property>
+<property name="feedbackConverter" ref="FeedbackConverter"></property>
+<property name="bapConverter" ref="BapConverter"></property>
+</bean>	
+
+<bean id="AdminConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IAdminConverterImpl">
+<property name="sujetconverter" ref="SujetConverter"></property>
+</bean>
+
+<bean id="SujetConverter" class="com.sqli.echallenge.bap.web.converters.Impl.ISujetConverterImpl">
+<property name="managerConverter" ref="ManagerConverter"></property>
+<property name="adminConverter" ref="AdminConverter"></property>
+</bean>
+
+<bean id="BapConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IBapConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+</bean>
+<bean id="ObjConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IObjectifConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+<property name="repConverter" ref="RepConverter"></property>
+<property name="projetConverter" ref="ProjetConverter"></property>
+<property name="desConverter" ref="DesObjConverter"></property>
+</bean>
+
+<bean id="RepConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IReponseObjConverterImpl">
+<property name="objConverter" ref="ObjConverter"></property>
+</bean>
+
+<bean id="PosteConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IPosteConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+</bean>
+
+<bean id="FeedbackConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IFeedbackConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+<property name="qualificationConverter" ref="QualConverter"></property>
+<property name="projetconverter" ref="ProjetConverter"></property>
+</bean>
+
+<bean id="DesObjConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IDescriptionObjConverterImpl">
+<property name="objectifConverter" ref="ObjConverter"></property>
+<property name="resultatPoids" ref="ResultatPoids"></property>
+</bean>
+
+<bean id="QualConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IQualificationConverterImpl">
+<property name="feedbackConverter" ref="FeedbackConverter"></property>
+</bean>
+
+<bean id="ProjetConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IProjetConverterImpl">
+<property name="managerConverter" ref="ManagerConverter"></property>
+<property name="objConverter" ref="ObjConverter"></property>
+<property name="evConverter" ref="EvConverter"></property>
+</bean>
+
+<bean id="ResultatPoids" class="com.sqli.echallenge.bap.web.converters.Impl.IResultatPoidsConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+<property name="desConverter" ref="DesObjConverter"></property>
+</bean>
+
+<!--  end Converter beans -->
+
+
+
+
+<!-- User Beans -->
+
+<bean id="UserDao" class="com.sqli.echallenge.bap.dao.IUserDaoImpl"></bean>
+<bean id="userService" class="com.sqli.echallenge.bap.service.IUserServiceImpl">
+     <property name="userDao" ref="UserDao"></property>
+</bean>
+<bean id="userFacade" class="com.sqli.echallenge.bap.web.facade.IUserFacadeImpl">
+     <property name="userService" ref="userService"></property>
+     <property name="colConverter" ref="ColConverter"></property>
+     <property name="evConverter" ref="EvConverter"></property>
+     <property name="adminConverter" ref="AdminConverter"></property>
+     <property name="managerConverter" ref="ManagerConverter"></property>
+</bean>
+
+
+<!-- Feedback Beans -->
+<bean id="FeedbackDao" class="com.sqli.echallenge.bap.dao.IFeedbackDaoImpl"></bean>
+<bean id="FeedbackService" class="com.sqli.echallenge.bap.service.IFeedbackServiceImpl">
+	<property name="feedbackDao" ref="FeedbackDao"></property>
+</bean>
+
+
+<bean id="FeedbackFacade" class="com.sqli.echallenge.bap.web.facade.IFeedbackFacadeImpl">
+	<property name="feedbackService" ref="FeedbackService"></property>
+	<property name="converter" ref="FeedbackConverter"></property>
+</bean>
+
+<bean id="ConverterBap" class="com.sqli.echallenge.bap.web.converters.Impl.IBapConverterImpl">
+<property name="colConverter" ref="ColConverter"></property>
+</bean>
+
+<!--  BAP beans -->
+<bean id="BapDao" class="com.sqli.echallenge.bap.dao.IBapDaoImpl"></bean>
+<bean id="BapService" class="com.sqli.echallenge.bap.service.IBapServiceImpl">
+	<property name="bapDao" ref="BapDao"></property>
+</bean>
+
+<bean id="BapFacade" class="com.sqli.echallenge.bap.web.facade.IBapFacadeimpl">
+<property name="bapService" ref="BapService"></property>
+<property name="converter" ref="ConverterBap"></property>
+</bean>
+
+<!-- Objectif Beans -->
+<bean id="ObjectifDao" class="com.sqli.echallenge.bap.dao.IObjectifDaoImpl"></bean>
+<bean id="ObjectifService" class="com.sqli.echallenge.bap.service.IObjectifServiceImpl">
+	<property name="objectifDao" ref="ObjectifDao"></property>
+</bean>
+<bean id="ObjectifFacade" class="com.sqli.echallenge.bap.web.facade.IObjectifFacadeImpl">
+	<property name="converter" ref="ObjConverter"></property>
+	<property name="objectifService" ref="ObjectifService"></property>
+	<property name="desFacade" ref="DescriptionObjFacade"></property>
+</bean>
+
+<!--  DescriptionObj Beans -->
+<bean id="DescriptionObjDao" class="com.sqli.echallenge.bap.dao.IDescriptionObjDaoImpl"></bean>
+<bean id="DescriptionObjService" class="com.sqli.echallenge.bap.service.IDescriptionObjServiceImpl">
+<property name="descriptionObjDao" ref="DescriptionObjDao"></property>
+</bean>
+<bean id="DescriptionObjFacade" class="com.sqli.echallenge.bap.web.facade.IDescriptionObjFacadeImpl">
+<property name="descriptionObjService" ref="DescriptionObjService"></property>
+<property name="converter" ref="DesObjConverter"></property>
+</bean>
+
+<!-- Projet Beans -->
+<bean id="ProjetDao" class="com.sqli.echallenge.bap.dao.IProjetDaoImpl"></bean>
+<bean id="ProjetService" class="com.sqli.echallenge.bap.service.IProjetServiceImpl">
+<property name="projetDao" ref="ProjetDao"></property>
+</bean>
+<bean id="ProjetFacade" class="com.sqli.echallenge.bap.web.facade.IProjetFacadeImpl">
+<property name="projetService" ref="ProjetService"></property>
+<property name="converter" ref="ProjetConverter"></property>
+</bean>
+
+<!-- Sujet Beans -->
+<bean id="SujetDao" class="com.sqli.echallenge.bap.dao.ISujetDaoImpl"></bean>
+<bean id="SujetService" class="com.sqli.echallenge.bap.service.ISujetServiceImpl">
+<property name="sujetDao" ref="SujetDao"></property>
+</bean>
+<bean id="SujetFacade" class="com.sqli.echallenge.bap.web.facade.ISujetFacadeImpl">
+<property name="converter" ref="SujetConverter"></property>
+<property name="sujetService" ref="SujetService"></property>
+</bean>
+
+<!-- ReponseObj Beans -->
+<bean id="ReponseObjDao" class="com.sqli.echallenge.bap.dao.IReponseObjDaoImpl"></bean>
+<bean id="ReponseObjService" class="com.sqli.echallenge.bap.service.IReponseObjServiceImpl">
+<property name="reponseObjDao" ref="ReponseObjDao"></property>
+</bean>
+<bean id="ReponseObjFacade" class="com.sqli.echallenge.bap.web.facade.IReponseObjFacadeImpl">
+<property name="reponseObjService" ref="ReponseObjService"></property>
+<property name="converter" ref="RepConverter"></property>
+</bean>
+
+<!-- Qualification Beans -->
+<bean id="QualificationDao" class="com.sqli.echallenge.bap.dao.IQualificationDaoImpl"></bean>
+<bean id="QualificationService" class="com.sqli.echallenge.bap.service.IQualificationServiceImpl">
+<property name="qualificationDao" ref="QualificationDao"></property>
+</bean>
+<bean id="QualificationFacade" class="com.sqli.echallenge.bap.web.facade.IQualificationFacadeImpl">
+<property name="qualificationService" ref="QualificationService"></property>
+<property name="converter" ref="QualConverter"></property>
+</bean>
+
+<!--  POSTE BEANS -->
+<bean id="PosteDao" class="com.sqli.echallenge.bap.dao.IPosteDaoImpl"></bean>
+<bean id="PosteService" class="com.sqli.echallenge.bap.service.IPosteServiceImpl">
+<property name="posteDao" ref="PosteDao"></property>
+</bean>
+<bean id="PosteFacade" class="com.sqli.echallenge.bap.web.facade.IPosteFacadeImpl">
+<property name="posteService" ref="PosteService"></property>
+<property name="converter" ref="PosteConverter"></property>
+</bean>
+
+<!-- ResultatPoids beans -->
+<bean id="ResultatPoidsDao" class="com.sqli.echallenge.bap.dao.IResultatPoidsDaoImpl"></bean>
+<bean id="ResultatPoidService" class="com.sqli.echallenge.bap.service.IResultatPoidsServiceImpl">
+<property name="resultatPoidDao" ref="ResultatPoidsDao"></property>
+</bean>
+<bean id="ResultatPoidsFacade" class="com.sqli.echallenge.bap.web.facade.IResultatPoidsFacadeImpl">
+<property name="resultatPoidService" ref="ResultatPoidService"></property>
+<property name="resultatPoidConverter" ref="ResultatPoids"></property>
+</bean>
+
+
+<tx:annotation-driven transaction-manager="transactionManager"/>
+<context:annotation-config></context:annotation-config>
+
+
+
+<!-- <s:http> -->
+<!-- <s:intercept-url pattern="/adminProd/**" access="ROLE_ADMIN_PROD"/> -->
+<!-- <s:intercept-url pattern="/adminCat/**" access="ROLE_ADMIN_CAT"/> -->
+<!-- <s:form-login login-page="/login" default-target-url="/adminProd/index" -->
+<!-- authentication-failure-url="/login" /> -->
+<!-- <s:logout logout-success-url="/logout" /> -->
+<!-- </s:http> -->
+<!-- <s:authentication-manager> -->
+<!-- <s:authentication-provider> -->
+<!-- <s:password-encoder hash="md5"></s:password-encoder> -->
+<!-- <s:jdbc-user-service data-source-ref="datasource" -->
+<!-- users-by-username-query="select userName,password, actived -->
+<!-- from users where userName=?" -->
+<!-- authorities-by-username-query="select u.userName, r.roleName from users u, role r -->
+<!-- where u.idUser = r.user_id and u.userName =? " /> -->
+<!--
+<s:user-service>
+<s:user name="admin1" password="admin1" authorities="ROLE_ADMIN_PROD"/>
+<s:user name="admin2" authorities="ROLE_ADMIN_CAT,ROLE_ADMIN_PROD" password="admin2" />
+</s:user-service>
+-->
+<!-- </s:authentication-provider> -->
+<!-- </s:authentication-manager> -->
+</beans>

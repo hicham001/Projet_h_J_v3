@@ -19,7 +19,7 @@ public interface IUserFacade{
 	public List<CollaborateurDto> getAllCollaborateur();
 	public List<ManagerDto> getAllManager();
 	public UserDto findUserByPsseudo(String mc, String pass);
-	//public List<UserDto> findUserByString(String mc);
 	public List<CollaborateurDto> getCollabEvaluateur(String matricule);
 	public List<ObjectifDto> getObjectifsCollab(String matricule);
+	public List<CollaborateurDto> getCollaborateurManager(String matricule);
 }
