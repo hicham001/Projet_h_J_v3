@@ -10,7 +10,8 @@
             <div class="clearfix"></div>
             </div>
             
-            <div class="x_content"><table class="table table-hover">
+            <div class="x_content">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                        <th>Matricule</th>
@@ -39,9 +40,12 @@
                               <td><span ng-bind="manager.telephone"></span></td>
                               <td><span ng-bind="manager.dateEmbauche"></span></td>
                               <td><img src="static/AngularJS/Templates/Collaborateur/images/user.png" alt="Collaborateur" width="40px"height="30px"/></td>
-                           <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#myModal1" ng-click="ctrl.detailsManager(manager)">Détail</button></td>  
-                        <td><a class="btn btn-success custom-width" data-toggle="modal" data-target="#myModal2" ng-click="ctrl.prepareEdit(manager)">Editer</a></td>
-                        <td><a class="btn btn-danger custom-width" data-toggle="modal" data-target="#myModal3" ng-click="ctrl.prepareEdit(manager)" >Supprimer</a></td>
+                           <td><button type="button" class="btn btn-info" title="Détails" data-toggle="modal" data-target="#myModal1" ng-click="ctrl.detailsManager(manager)">
+                           <span class="glyphicon glyphicon-info-sign"></span></button></td>  
+                        <td><a class="btn btn-success custom-width" title="Editer" data-toggle="modal" data-target="#myModal2" ng-click="ctrl.prepareEdit(manager)">
+                        <span class="glyphicon glyphicon-edit"></span></a></td>
+                        <td><a class="btn btn-danger custom-width" title="Supprimer" data-toggle="modal" data-target="#myModal3" ng-click="ctrl.prepareEdit(manager)" >
+                        <span class="glyphicon glyphicon-remove"></span></a></td>
                         
                     </tr>
                 </tbody>

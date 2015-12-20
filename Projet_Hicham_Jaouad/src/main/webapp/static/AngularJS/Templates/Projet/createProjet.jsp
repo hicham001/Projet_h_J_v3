@@ -1,4 +1,4 @@
- <div class="row">
+<div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
@@ -7,18 +7,18 @@
                                 </div>
                                 <div class="x_content">
                                 <div id="wizard" class="form_wizard wizard_horizontal">
-                                 <ul class="wizard_steps">
+                                  <ul class="wizard_steps">
                                             <li>
-                                                <a href="#"  class="selected" isdone="1" >
+                                                <a href="#" class="selected" >
                                                     <span class="step_no">1</span>
                                                     <span class="step_descr">
                                             Etape 1<br />
-                                            <small>Affecation des Evaluateurs</small>
+                                            <small>Affecation des <br>Evaluateurs</small>
                                         </span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="selected"  rel="2">
+                                                <a href="#" class="selected" rel="2">
                                                     <span class="step_no">2</span>
                                                     <span class="step_descr">
                                             Etape 2<br />
@@ -28,6 +28,8 @@
                                             </li> 
                                    </ul>
                                     <br />
+                                 
+                                
                           
                                     
                                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">

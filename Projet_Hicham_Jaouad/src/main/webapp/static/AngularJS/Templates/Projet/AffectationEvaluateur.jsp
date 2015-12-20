@@ -9,7 +9,7 @@
                                 <div id="wizard" class="form_wizard wizard_horizontal">
                                  <ul class="wizard_steps">
                                             <li>
-                                                <a href="#" isdone="1" class="selected" rel="1">
+                                                <a href="#" class="selected" >
                                                     <span class="step_no">1</span>
                                                     <span class="step_descr">
                                             Etape 1<br />

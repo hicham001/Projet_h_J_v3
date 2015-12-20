@@ -10,7 +10,7 @@
                     <!-- menu prile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="<%=request.getContextPath()%>/static/images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="<%=request.getContextPath()%>/static/images/admin.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>${param.nom}</span>
@@ -83,7 +83,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<%=request.getContextPath()%>/static/images/img.jpg" alt="">${param.nom}
+                                    <img src="<%=request.getContextPath()%>/static/images/admin.jpg" alt="">${param.nom}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -102,7 +102,7 @@
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="<%=request.getContextPath()%>/static/images/img.jpg" alt="Profile Image" />
+                                        <img src="<%=request.getContextPath()%>/static/images/admin.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
                                         <span>John Smith</span>

@@ -35,9 +35,12 @@
                               <td><span ng-bind="projet.objectifs[0].descriptions[0].mesure"></span></td>
                               <td><span ng-bind="projet.objectifs[0].descriptions[0].responsableMesure"></span></td>
                               <td><span ng-bind="projet.objectifs[0].descriptions[0].poids"></span></td>
-                           <td><button type="button" class="btn btn-info" ng-click="detailsProjet(projet)">Info</button></td>  
-                        <td><a class="btn btn-success custom-width" ng-click="prepareEdit(projet)">edit</a></td>
-                        <td><a class="btn btn-danger custom-width" ng-click="deleteProjet(projet.codeprojet)" >delete</a></td>
+                           <td><button type="button" class="btn btn-info" title="Détails" ng-click="detailsProjet(projet)">
+                          <span class="glyphicon glyphicon-info-sign"></span></button></td>  
+                        <td><a class="btn btn-success custom-width" title="Editer" ng-click="prepareEdit(projet)">
+                        <span class="glyphicon glyphicon-edit"></span></a></td>
+                        <td><a class="btn btn-danger custom-width" title="Supprimer" ng-click="deleteProjet(projet.codeprojet)" >
+                       <span class="glyphicon glyphicon-remove"></span></a></td>
                         
                     </tr>
                 </tbody>

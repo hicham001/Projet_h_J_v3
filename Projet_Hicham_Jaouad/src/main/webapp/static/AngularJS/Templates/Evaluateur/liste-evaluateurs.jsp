@@ -39,9 +39,12 @@
                               <td><span ng-bind="evaluateur.telephone"></span></td>
                               <td><span ng-bind="evaluateur.dateEmbauche"></span></td>
                               <td><img src="static/AngularJS/Templates/Collaborateur/images/user.png" alt="Collaborateur" width="40px"height="30px"/></td>
-                           <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="ctrl.detailsEvaluateur(evaluateur)">Détail</button></td>  
-                        <td><a class="btn btn-success custom-width" data-toggle="modal" data-target="#myModal2" ng-click="ctrl.prepareEdit(evaluateur)">Editer</a></td>
-                        <td><a class="btn btn-danger custom-width" data-toggle="modal" data-target="#myModal3" ng-click="ctrl.prepareEdit(evaluateur)">Supprimer</a></td>
+                           <td><button type="button" class="btn btn-info" data-toggle="modal" title="Détails" data-target="#myModal" ng-click="ctrl.detailsEvaluateur(evaluateur)">
+                           <span class="glyphicon glyphicon-info-sign"></span></button></td>  
+                        <td><a class="btn btn-success custom-width" data-toggle="modal" title="Editer" data-target="#myModal2" ng-click="ctrl.prepareEdit(evaluateur)">
+                        <span class="glyphicon glyphicon-edit"></a></td>
+                        <td><a class="btn btn-danger custom-width" data-toggle="modal" title="Supprimer" data-target="#myModal3" ng-click="ctrl.prepareEdit(evaluateur)">
+                       <span class="glyphicon glyphicon-remove"></a></td>
                         
                     </tr>
                 </tbody>

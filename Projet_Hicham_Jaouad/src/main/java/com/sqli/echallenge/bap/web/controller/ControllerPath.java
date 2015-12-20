@@ -10,7 +10,7 @@ public class ControllerPath {
 	public String collaborateur(){
 		return "GestionFeedback";
 	}
-	@RequestMapping("profilCollab")
+	@RequestMapping("GestionObjectifs")
 	public String collaborateurProfil(){
 		return "profilCollab";
 	}

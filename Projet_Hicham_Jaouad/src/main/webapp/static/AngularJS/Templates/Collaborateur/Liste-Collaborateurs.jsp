@@ -40,9 +40,15 @@
                               <td><span ng-bind="collaborateur.manager.matricule"></span></td>
                               <td><span ng-bind="collaborateur.poste.intitule"></span></td>
                               <td><img src="static/AngularJS/Templates/Collaborateur/images/user.png" alt="Collaborateur" width="40px"height="30px"/></td>
-                           <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModall" ng-click="ctrl.detailsCollab(collaborateur)">Détail</button></td>  
-                        <td><a class="btn btn-success custom-width" data-toggle="modal" data-target="#myModal2" ng-click="ctrl.prepareEdit(collaborateur)">Editer</a></td>
-                        <td><a class="btn btn-danger custom-width" data-toggle="modal" data-target="#myModal3" ng-click="ctrl.prepareEdit(collaborateur)" >Supprimer</a></td>
+                           
+                           <td><button type="button" class="btn btn-info" data-toggle="modal" title="Détails" data-target="#myModall" ng-click="ctrl.detailsCollab(collaborateur)">
+                           <span class="glyphicon glyphicon-info-sign"></span></button></td>  
+                           
+                        <td><a class="btn btn-success custom-width" data-toggle="modal" data-target="#myModal2" title="Editer" ng-click="ctrl.prepareEdit(collaborateur)">
+                        <span class="glyphicon glyphicon-edit"></span></a></td>
+                        
+                        <td><a class="btn btn-danger custom-width" title="Supprimer" data-toggle="modal" data-target="#myModal3" ng-click="ctrl.prepareEdit(collaborateur)" >
+                        <span class="glyphicon glyphicon-remove"></span></a></td>
                         
                     </tr>
                 </tbody>

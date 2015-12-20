@@ -42,9 +42,6 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="entityManagerFactory" ref="entityManagerFactory"></property>
 </bean>
 
-
-
-
 <!-- Converters beans -->
 <bean id="EvConverter" class="com.sqli.echallenge.bap.web.converters.Impl.IEvaluateurConverterImpl">
 <property name="colConverter" ref="ColConverter"></property>
@@ -259,6 +256,8 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 <s:intercept-url pattern="/GestionManager/**" access="hasRole('ADMIN')"/>
 <s:intercept-url pattern="/GestionCollaborateur/**" access="hasRole('ADMIN')"/>
 <s:intercept-url pattern="/GestionProjet/**" access="hasRole('MANAGER')"/>
+<s:intercept-url pattern="/GestionFeedback/**" access="hasRole('EVALUATEUR')"/>
+<s:intercept-url pattern="/GestionObjectifs/**" access="hasRole('COLLABORATEUR')"/>
 <s:access-denied-handler error-page="/403" />
 <s:form-login login-page="/login" default-target-url="/acceuil"
 			authentication-failure-url="/login"
